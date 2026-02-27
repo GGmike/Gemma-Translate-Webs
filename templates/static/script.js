@@ -60,16 +60,18 @@ swapBtn.addEventListener("click", () => {
   const tmpLang = sourceLang.value;
   sourceLang.value = targetLang.value;
   targetLang.value = tmpLang;
-
+  
   const tmpText = sourceText.value;
   sourceText.value = targetText.value;
   targetText.value = tmpText;
-
+  
   charCount.textContent =
-    `${sourceText.value.length} character${sourceText.value.length !== 1 ? "s" : ""}`;
+  `${sourceText.value.length} character${sourceText.value.length !== 1 ? "s" : ""}`;
 });
 
 translateBtn.addEventListener("click", async () => {
+  const sourceLabel = sourceLang.options[sourceLang.selectedIndex].textContent;
+  const targetLabel = targetLang.options[targetLang.selectedIndex].textContent;
   const text = sourceText.value.trim();
   if (!text) { sourceText.focus(); return; }
 
@@ -86,6 +88,8 @@ translateBtn.addEventListener("click", async () => {
         source_lang: sourceLang.value,
         target_lang: targetLang.value,
         model: modelSelect.value, 
+        source_label: sourceLabel,
+        target_label: targetLabel,
       }),
     });
 
