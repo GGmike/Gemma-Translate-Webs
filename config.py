@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from enum import Enum
 
 
 AVAILABLE_MODELS = [
@@ -12,8 +11,8 @@ AVAILABLE_MODELS = [
 
 @dataclass(frozen=True)
 class LLMConfig:
-    model_name: str 
+    # model_name: str 
     temperature: float = 0.0
     verbose: bool = True
-    base_url: str
+    base_url: str = "http://localhost:11434"
 
